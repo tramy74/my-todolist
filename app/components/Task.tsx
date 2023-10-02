@@ -3,10 +3,9 @@
 import { ITask } from "@/types/tasks";
 import { FormEventHandler, useState } from "react";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-import { GrFormView } from "react-icons/gr";
 import Modal from "./Modal";
 import { useRouter } from "next/navigation";
-import { deleteTodo, editTodo, viewTodo } from "@/api";
+import { deleteTodo, editTodo } from "@/api";
 
 interface TaskProps {
   task: ITask;
@@ -17,7 +16,6 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [openModalDeleted, setOpenModalDeleted] = useState<boolean>(false);
   const [taskToEdit, setTaskToEdit] = useState<string>(task.text);
-  const [openModalView, setOpenModalView] = useState<boolean>(false);
 
   const handleSubmitEditTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
@@ -32,12 +30,6 @@ const Task: React.FC<TaskProps> = ({ task }) => {
   const handleDeleteTask = async (id: string) => {
     await deleteTodo(id);
     setOpenModalDeleted(false);
-    router.refresh();
-  };
-
-  const handleViewTask = async (id: string) => {
-    await viewTodo(id);
-    setOpenModalView(false);
     router.refresh();
   };
 
@@ -83,18 +75,6 @@ const Task: React.FC<TaskProps> = ({ task }) => {
               Yes
             </button>
           </div>
-        </Modal>
-        <GrFormView
-          onClick={() => setOpenModalView(true)}
-          cursor='pointer'
-          className='text-green-500'
-          size={25}
-        />
-        <Modal modalOpen={openModalView} setModalOpen={setOpenModalView}>
-          <h3 className='text-lg'>
-          {task.text}
-          </h3>
-          
         </Modal>
       </td>
     </tr>

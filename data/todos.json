@@ -1,16 +1,10 @@
 {
-  "tasks": [
-    {
-      "id": 1,
-      "text": "Do something nice for someone I care about",
-      "completed": true,
-      "userId": 26
-    },
-    {
-      "id": 2,
-      "text": "cook dinner",
-      "completed": true,
-      "userId": 26
-    }
-  ]
-}
+    "tasks": [
+      {
+        "id": 1,
+        "text": "Do something nice for someone I care about",
+        "completed": true,
+        "userId": 26
+      }
+    ]
+  }

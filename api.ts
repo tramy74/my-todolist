@@ -37,9 +37,3 @@ export const deleteTodo = async (id: string): Promise<void> => {
     method: 'DELETE',
   })
 }
-
-export const viewTodo = async (id: string): Promise<void> => {
-    await fetch(`${baseUrl}/tasks/${id}`, {
-      method: 'VIEW',
-    })
-}
